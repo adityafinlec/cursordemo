@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mood-based Recipe Picker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center">
+    <div class="max-w-xl w-full mx-4">
+      <div
+        class="bg-slate-900/70 border border-slate-800 shadow-2xl shadow-emerald-500/10 rounded-2xl p-6 sm:p-8 backdrop-blur"
+      >
+        <header class="mb-6 text-center">
+          <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-2">
+            Mood-based Recipe Recommendation
+          </h1>
+          <p class="text-sm text-slate-400">
+            Pick how you feel and we&apos;ll suggest something tasty to match.
+          </p>
+        </header>
+
+        <section class="space-y-4">
+          <div>
+            <label for="mood" class="block text-sm font-medium text-slate-300 mb-2">
+              How are you feeling?
+            </label>
+            <select
+              id="mood"
+              class="w-full rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            >
+              <option value="">Select a mood</option>
+              <option value="happy">Happy</option>
+              <option value="sad">Sad</option>
+              <option value="stressed">Stressed</option>
+              <option value="tired">Tired</option>
+              <option value="adventurous">Adventurous</option>
+            </select>
+          </div>
+
+          <div class="flex gap-3">
+            <button
+              id="getRecipeBtn"
+              class="flex-1 inline-flex items-center justify-center rounded-xl bg-emerald-500/90 text-slate-950 font-medium text-sm py-2.5 px-4 hover:bg-emerald-400 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-950 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Get recipe
+            </button>
+            <button
+              id="newRecipeBtn"
+              class="flex-1 inline-flex items-center justify-center rounded-xl border border-slate-700 text-slate-200 font-medium text-sm py-2.5 px-4 hover:bg-slate-800/80 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-950 disabled:opacity-40 disabled:cursor-not-allowed"
+              disabled
+            >
+              New suggestion
+            </button>
+          </div>
+        </section>
+
+        <section
+          id="recipeSection"
+          class="mt-6 border border-dashed border-slate-800 rounded-2xl p-4 sm:p-5 bg-slate-900/60 hidden"
+        >
+          <p id="statusMessage" class="text-sm text-slate-400 mb-3 hidden"></p>
+
+          <div id="recipeContent" class="space-y-3 hidden">
+            <div class="flex items-center justify-between gap-2">
+              <h2 id="recipeTitle" class="text-lg font-semibold"></h2>
+              <span
+                id="recipeMood"
+                class="inline-flex items-center rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-emerald-300"
+              ></span>
+            </div>
+            <p id="recipeDescription" class="text-sm text-slate-300"></p>
+
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div>
+                <h3 class="text-xs font-semibold tracking-wide text-slate-400 uppercase mb-1">
+                  Ingredients
+                </h3>
+                <ul id="recipeIngredients" class="text-sm text-slate-200 list-disc list-inside space-y-0.5"></ul>
+              </div>
+              <div>
+                <h3 class="text-xs font-semibold tracking-wide text-slate-400 uppercase mb-1">
+                  Instructions
+                </h3>
+                <p id="recipeInstructions" class="text-sm text-slate-200"></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="mt-4 text-center">
+        <p class="text-[11px] text-slate-500">
+          Tip: Don&apos;t like a suggestion? Click <span class="font-semibold text-slate-300">New suggestion</span>.
+        </p>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+  </html>
+
